@@ -1,0 +1,18 @@
+<h1><%="#{@user.name}'s Profile"  %> </h1>
+
+<%= @user.name  %> <br>
+<%= @user.age  %><br>
+<%= @user.gender  %><br>
+From: <%= @user.location  %><br>
+Interested in: <%= @user.preference  %><br>
+<% @user.matchers.each do |matcher|  %><br>
+  Matches: <%= link_to matcher.name, matcher  %><br>
+<% end %><br>
+Likes: <% @user.interests.each do |interest| %>
+  <%= interest.name %> <br>
+<% end %>
+<br>
+
+<%= link_to "Back To All Users", users_path %> <br>
+
+<%= link_to "Delete Profile", user_path, method: :delete %>
