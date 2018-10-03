@@ -1,6 +1,6 @@
-<h1>Edit Your Profile!</h1>
+<h2>Profile Info</h2>
 
-<%= form_for @user do |f| %>
+  <%= form_for @user do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %><br>
@@ -16,6 +16,8 @@
 
   <%= f.label :preference %>
   <%= f.text_field :preference %><br>
+
+  <%= f.collection_check_boxes :interest_ids, Interest.all, :id, :name %><br>
 
   <%= f.submit %>
 

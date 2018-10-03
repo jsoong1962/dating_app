@@ -1,0 +1,14 @@
+<h2> Advance Search</h2>
+<%= form_for @search do |f| %>
+<%= f.label :interest %>
+<%= f.select :interest, options_for_select(@interests)%>
+<%= f.label :min_age %>
+<%= f.number_field :min_age %>
+<%= f.label :max_age %>
+<%= f.number_field :max_age %>
+<%= f.label :gender %>
+<%= f.text_field :gender%>
+<%= f.label :location %>
+<%= f.text_field :location %>
+<%= f.submit %>
+<% end %>

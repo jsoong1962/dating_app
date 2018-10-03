@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_155401) do
+ActiveRecord::Schema.define(version: 2018_10_03_014353) do
 
   create_table "interests", force: :cascade do |t|
     t.string "name"
@@ -23,11 +23,24 @@ ActiveRecord::Schema.define(version: 2018_10_01_155401) do
     t.integer "matched_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["matched_id"], name: "index_matches_on_matched_id"
+    t.index ["matcher_id", "matched_id"], name: "index_matches_on_matcher_id_and_matched_id", unique: true
+    t.index ["matcher_id"], name: "index_matches_on_matcher_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "post"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string "interest"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.string "gender"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +60,8 @@ ActiveRecord::Schema.define(version: 2018_10_01_155401) do
     t.string "preference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "password_digest"
   end
 
 end
