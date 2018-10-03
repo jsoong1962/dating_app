@@ -1,5 +1,9 @@
 <h1><%="#{@user.name}'s Profile"  %> </h1>
 
+ <%= render 'shared/stats' %>
+
+ <%= render 'follow_form' if logged_in? %>
+
 <%= @user.name  %> <br>
 <%= @user.age  %><br>
 <%= @user.gender  %><br>
