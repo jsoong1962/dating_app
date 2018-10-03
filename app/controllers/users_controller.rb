@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    if current_user != @user
+      redirect_to @user
+    end
   end
 
   def update
@@ -38,9 +40,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    if current_user != @user
+      redirect_to @user
+    else
+      @user.destroy
     flash[:notice] = 'You deleted ur account. YEET!'
     redirect_to users_path
+    end 
   end
 
   private

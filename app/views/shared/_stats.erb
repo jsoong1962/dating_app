@@ -1,0 +1,12 @@
+<% @user ||= current_user %>
+
+<%= matching_user_path(@user) %>
+
+      <%= @user.matching.count %>
+    matching
+
+<%= matchers_user_path(@user) %>
+
+      <%= @user.matchers.count %>
+
+    matchers
