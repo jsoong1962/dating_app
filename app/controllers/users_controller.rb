@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+  
   end
 
   def edit
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       @user.destroy
     flash[:notice] = 'You deleted ur account. YEET!'
     redirect_to users_path
-    end 
+    end
   end
 
   private

@@ -1,21 +1,21 @@
-<h1><%="#{@user.name}'s Profile"  %> </h1>
-
- <%= render 'shared/stats' %>
-
- <%= render 'follow_form' if logged_in? %>
-
-<%= @user.name  %> <br>
-<%= @user.age  %><br>
-<%= @user.gender  %><br>
-From: <%= @user.location  %><br>
-Interested in: <%= @user.preference  %><br>
-<% @user.matchers.each do |matcher|  %><br>
-  Matches: <%= link_to matcher.name, matcher  %><br>
-<% end %><br>
-Likes: <% @user.interests.each do |interest| %>
-  <%= interest.name %> <br>
+<% if current_user == @user %>
+  <h1><%="Your Profile!"%></h1>
+    <% else  %>
+      <h1><%="#{@user.name}'s Profile"%> </h1>
 <% end %>
-<br>
+
+  Name: <%= @user.name  %> <br>
+  Age: <%= @user.age  %><br>
+  Gender: <%= @user.gender  %><br>
+  From: <%= @user.location  %><br>
+  Interested in: <%= @user.preference  %><br>
+  <% @user.matchers.each do |matcher|  %><br>
+    Matches: <%= link_to matcher.name, matcher  %><br>
+  <% end %><br>
+  Likes: <% @user.interests.each do |interest| %>
+    <%= interest.name %> <br>
+  <% end %>
+  <br>
 
 
 <%= link_to "Advance Search", new_search_path %><br>
@@ -30,4 +30,27 @@ Likes: <% @user.interests.each do |interest| %>
 
 <% end %>
 
-<%= link_to 'Logout', logout_path, method: :delete %>
+<%= link_to 'Logout', logout_path, method: :delete %> <br>
+
+
+<% if current_user != @user %>
+
+<% @user ||= current_user %>
+<% matching_user_path(@user) %> <br>
+
+      <%= @user.matching.count %> <br>
+      <%= 'matching' %>
+
+<% matchers_user_path(@user) %> <br>
+
+      <%= @user.matchers.count %> <br>
+
+    matchers <br>
+
+    <% if current_user.matching?(@user) %>
+      <%= render 'unmatch' %>
+      <% else %>
+        <%= render 'match' %>
+    <% end %>
+
+  <%end %>
