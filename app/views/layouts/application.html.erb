@@ -5,12 +5,30 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet "/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="ui menu">
+      <div class="header item">
+        Home (Suggestions)
+      </div>
+      <a class="item">
+        Profile
+      </a>
+      <a class="item">
+        Edit Profile
+      </a>
+      <a class="item">
+        Search
+      </a>
+      <a class="item">
+        Log Out
+      </a>
+    </div>
     <%= yield %>
   </body>
 </html>

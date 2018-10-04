@@ -1,13 +1,21 @@
-<h1>Login</h1>
-
 <% if flash[:notice] %>
   <%= flash[:notice] %>
 <% end %>
 
-<%= form_tag sessions_path do %>
-  <%= label_tag "Username" %>
-  <%= text_field_tag :username %>
-  <%= label_tag "Password" %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Sign In" %>
-<% end %>
+
+
+
+<div class="login box">
+  <div class="look4love">Look4Love</div>
+  <%= form_tag sessions_path, {class: 'ui form'} do %>
+    <div class="field">
+      <%= label_tag "Username" %>
+      <%= text_field_tag :username %>
+    </div>
+    <div class="field">
+      <%= label_tag "Password" %>
+      <%= password_field_tag :password %>
+    </div>
+    <%= submit_tag "Sign In", class: "ui blue basic button" %>
+  <% end %>
+</div>

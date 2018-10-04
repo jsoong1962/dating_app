@@ -1,7 +1,7 @@
 <% if current_user == @user %>
-  <h1 class="headers"><%="Your Profile!"%></h1>
+  <h1><%="Your Profile!"%></h1>
     <% else  %>
-      <h1 class="headers"> <%="#{@user.name}'s Profile"%> </h1>
+      <h1> <%="#{@user.name}'s Profile"%> </h1>
 <% end %>
 
   <%= image_tag @user.image.url(:medium) %> <br>
