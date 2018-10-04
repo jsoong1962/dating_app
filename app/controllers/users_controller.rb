@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @suggested_users = current_user.suggested_users
   end
 
   def edit
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :username, :password, :password_confirmation, :age, :gender, :location, :preference, interest_ids:[])
+    params.require(:user).permit(:image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :bio, :name, :username, :password, :password_confirmation, :age, :gender, :location, :preference, interest_ids:[])
   end
 
   def find_user

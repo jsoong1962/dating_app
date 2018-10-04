@@ -1,7 +1,7 @@
 <h2>Profile Info</h2>
 
 
-  <%= form_for @user do |f| %>
+  <%= form_for @user, html: {multipart: true} do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name %><br>
@@ -16,9 +16,15 @@
   <%= f.text_field :location %><br>
 
   <%= f.label :preference %>
-  <%= f.select :preference, [['Male'], ['Female'], ['Non-Binary']]%>
+  <%= f.select :preference, [['Male'], ['Female'], ['Non-Binary']]%><br>
+
+  <%= f.label :bio %>
+  <%= f.text_area :bio %><br>
 
   <%= f.collection_check_boxes :interest_ids, Interest.all, :id, :name %><br>
+
+  <%= f.label :image %>
+  <%= f.file_field :image %>
 
   <%= f.submit %>
 

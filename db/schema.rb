@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_014353) do
+ActiveRecord::Schema.define(version: 2018_10_04_150134) do
 
   create_table "interests", force: :cascade do |t|
     t.string "name"
@@ -62,6 +62,12 @@ ActiveRecord::Schema.define(version: 2018_10_03_014353) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "password_digest"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.string "bio"
+    t.string "image"
   end
 
 end
