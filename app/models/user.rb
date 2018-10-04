@@ -35,7 +35,7 @@ class User < ApplicationRecord
     self.interests.each do |int|
       users << int.users
     end
-    users.flatten.uniq
+    users.flatten.uniq.select{ |user| user != self }
   end
 
 
