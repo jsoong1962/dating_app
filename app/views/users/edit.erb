@@ -1,5 +1,6 @@
 <h2>Profile Info</h2>
 
+
   <%= form_for @user do |f| %>
 
   <%= f.label :name %>
@@ -9,13 +10,13 @@
   <%= f.number_field :age %><br>
 
   <%= f.label :gender %>
-  <%= f.text_field :gender %><br>
+  <%= f.select :gender, [['Male'], ['Female'], ['Non-Binary']] %><br>
 
   <%= f.label :location %>
   <%= f.text_field :location %><br>
 
   <%= f.label :preference %>
-  <%= f.text_field :preference %><br>
+  <%= f.select :preference, [['Male'], ['Female'], ['Non-Binary']]%>
 
   <%= f.collection_check_boxes :interest_ids, Interest.all, :id, :name %><br>
 

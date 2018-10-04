@@ -16,12 +16,13 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       render :edit
     else
+      flash[:error] = @user.errors.full_messages
       redirect_to new_user_path
     end
   end
 
   def show
-  
+
   end
 
   def edit
@@ -32,11 +33,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if @user.valid?
-      redirect_to @user
-    else
-      redirect_to edit_user_path
-    end
+    redirect_to @user
   end
 
   def destroy
