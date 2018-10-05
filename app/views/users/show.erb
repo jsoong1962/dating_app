@@ -4,37 +4,49 @@
       <h1> <%="#{@user.name}'s Profile"%> </h1>
 <% end %>
 
-  <%= image_tag @user.image.url(:medium) %> <br>
-  Name: <%= @user.name  %> <br>
+<div class="ui card">
+  <div class="image">
+    <%= image_tag @user.image.url(:medium) %>
+  </div>
+  <div class="content">
+    <a class="header"><%="#{@user.name}"%></a>
+    <div class="meta">
+      <span class="age"><%="#{@user.age} years old."%></span>
+    </div>
+    <div class="meta">
+      <span class="location"><%="#{@user.location}"%></span>
+    </div>
+    <div class="meta">
+      <span class="interested in"><%="Interested in: #{@user.preference}"%></span>
+    </div>
+    <div class="description">
+      <%= @user.bio %>
+    </div>
+  </div>
+  <div class="extra content">
+  </div>
+</div>
+
+
+  <!-- <%= image_tag @user.image.url(:medium) %> <br> -->
+  <!-- Name: <%= @user.name  %> <br>
   Age: <%= @user.age  %><br>
   Gender: <%= @user.gender  %><br>
-  From: <%= @user.location  %><br>
-  Interested in: <%= @user.preference  %><br>
-  Bio: <%= @user.bio %><br>
+  From: <%= @user.location  %><br> -->
+  <!-- Interested in: <%= @user.preference  %><br> -->
+  <!-- Bio: <%= @user.bio %><br> -->
   <% if current_user == @user %>
-    <%= "Things You Like:" %> <% @user.interests.each do |interest| %>
-      <%= interest.name %> <br>
+    <h4>Things You Like:</h4> <% @user.interests.each do |interest| %>
+      <li><%= interest.name %> </li>
     <% end %>
     <% else %>
     <%= "Things #{@user.name} Likes:" %> <% @user.interests.each do |interest| %>
-      <%= interest.name %> <br>
+      <li><%= interest.name %> </li>
     <% end %>
-  <% end %><br>
-
-  <% if current_user == @user %>
-    <% @user.matchers.each do |matcher|  %><br>
-      Matches: <%= link_to matcher.name, matcher  %><br>
-      <% end %>
   <% end %>
 
-  <% if current_user == @user %>
-    <%= link_to "Delete Profile", user_path, method: :delete %> <br>
-  <% end %>
 
-  <%= link_to "Back To All Users", users_path %> <br>
-
-
-<% if current_user != @user %>
+  <% if current_user != @user %>
     <% if current_user.matching?(@user) %>
       <%= render 'unmatch' %>
       <% else %>
@@ -53,6 +65,12 @@
     <% @suggested_users.each do |su|  %>
       <li><%= link_to su.name, su %></li>
     <% end %>
-
 </ul>
+  <% end %>
+
+
+<% if current_user == @user %>
+  <%= link_to "Delete Profile", user_path, method: :delete %> <br>
 <% end %>
+
+<%= link_to "Back To All Users", users_path %> <br>
