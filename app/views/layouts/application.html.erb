@@ -16,10 +16,10 @@
       <div class="header item">
         Home (Suggestions)
       </div>
-      <a class="item" href="/users/current_user">
+      <a class="item"  href="<%="/users/#{session[:user_id]}"%>">
         Profile
       </a>
-      <a class="item" href="/users/current_user/edit">
+      <a class="item" href="<%="/users/#{session[:user_id]}/edit/"%>">
         Edit Profile
       </a>
       <a class="item" href="/searches/new">

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorized, only: [:new, :create]
+  # skip_before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -26,6 +27,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.id == params[:id]
+      @user = current_user
+    end
     if current_user != @user
       redirect_to @user
     end
@@ -53,11 +57,11 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    if logged_in?
-      @user = current_user
-    else
+    # if logged_in?
+    #   @user = current_user
+    # else
       @user = User.find_by(id: params[:id])
-    end
+    # end
   end
 
 end
